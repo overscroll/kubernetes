@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: strapi
+  labels:
+    app: strapi
+    tier: backend
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 1337
+  selector:
+    app: strapi
+  sessionAffinity: None

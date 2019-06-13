@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: strapi-config
+  labels:
+    app: strapi
+data:
+  APP_NAME: strapi-app
+  DATABASE_CLIENT: postgres
+  DATABASE_HOST: postgres
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: postgresdb
+  DATABASE_USERNAME: postgresadm
+  DATABASE_PASSWORD: hgf99ioLH8_fsk
+  DATABASE_SSL: "false"
+  DATABASE_AUTHENTICATION_DATABASE: strapi
+  HOST: api.overscroll.com

@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: strapi
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: strapi
+    spec:
+      containers:
+        - name: strapi
+          image: overscroll/strapi:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 1337
+          env:
+            - name: NODE_ENV
+              value: "production"
+          envFrom:
+            - configMapRef:
+                name: strapi-config
