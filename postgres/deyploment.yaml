@@ -10,17 +10,24 @@ spec:
         app: postgres
     spec:
       containers:
-        - name: postgres
-          image: postgres:10.4
-          imagePullPolicy: "IfNotPresent"
-          ports:
-            containerPort: 5432
-          envFrom:
-            - configMapRef:
-                name: postgres-config
-          volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: postgredb
+      - name: postgres
+        image: postgres:10.4
+        imagePullPolicy: "IfNotPresent"
+        ports:
+          - containerPort: 5432
+        envFrom:
+          - configMapRef:
+              name: postgres-config
+        volumeMounts:
+          - mountPath: /var/lib/postgresql/data
+            name: postgredb
+      initContainers:
+      - name: pgsql-data-permission-fix
+        image: busybox
+        command: ["/bin/chmod","-R","777", "/var/lib/postgresql/data"]
+        volumeMounts:
+        - name: postgredb
+          mountPath: /var/lib/postgresql/data
       volumes:
         - name: postgredb
           persistentVolumeClaim:

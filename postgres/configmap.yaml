@@ -8,3 +8,4 @@ data:
   POSTGRES_DB: postgresdb
   POSTGRES_USER: postgresadm
   POSTGRES_PASSWORD: hgf99ioLH8_fsk
+  PGDATA: /var/lib/postgresql/data/pgdata
